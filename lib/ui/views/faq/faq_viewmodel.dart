@@ -6,7 +6,7 @@ import '../base/view_model.dart';
 class FaqViewModel extends ViewModel {
   List<FaqTopic> get faqTopics {
     return faqs.entries.map((entry) {
-      final title = entry.key.capitalize();
+      final title = entry.key.replaceAll('_', ' ').capitalize();
       final faqList = (entry.value).map((faqData) {
         return Faq(
           question: faqData['question'] ?? '',

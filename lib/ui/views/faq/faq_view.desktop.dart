@@ -63,22 +63,46 @@ class FaqViewDesktop extends ViewModelWidget<FaqViewModel> {
   Widget _buildFaqTopicWidget(BuildContext context, FaqTopic topic) {
     return Column(
       mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           topic.title,
           style: Theme.of(context).textTheme.titleLarge?.copyWith(
-              fontSize: 35,
+              fontSize: 25,
               fontWeight: FontWeight.bold,
-              color: AppColors.accentColorText),
+              color: AppColors.blackColor),
         ),
         verticalSpaceSmall,
         ...topic.faqs
             .map((e) => FAQ(
                   question: e.question,
                   answer: e.answer,
+                  showDivider: false,
+                  ansPadding: const EdgeInsets.all(30),
+                  queStyle: Theme.of(context).textTheme.bodySmall?.copyWith(
+                      fontSize: 18,
+                      color: AppColors.blackColor,
+                      fontWeight: FontWeight.bold),
+                  ansStyle: Theme.of(context)
+                      .textTheme
+                      .labelMedium
+                      ?.copyWith(fontSize: 14, color: AppColors.blackColor600,  fontWeight: FontWeight.w700),
+                  separator: Container(
+                    height: 2,
+                    width: double.infinity,
+                    color: AppColors.divider,
+                  ),
+                  queDecoration: BoxDecoration(
+                      color: AppColors.whiteColor,
+                      borderRadius: const BorderRadius.all(Radius.circular(0))),
+                  ansDecoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(0)),
                 ))
             .toList(),
-        verticalSpaceMedium
+        verticalSpaceMedium,
+        Divider(height: 2, color: AppColors.divider),
+        verticalSpaceMedium,
       ],
     );
   }

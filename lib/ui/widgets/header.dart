@@ -131,7 +131,7 @@ class BreadcrumbsWidget extends StatelessWidget {
             InkWell(
               onTap: isLast ? null : () => useCase?.goToPage(item),
               child: Text(
-                item.capitalize(),
+                item.replaceAll('-view', '').capitalize(),
                 style: Theme.of(context).textTheme.labelSmall?.copyWith(
                       color: AppColors.blackColor,
                       fontWeight: FontWeight.w600,
