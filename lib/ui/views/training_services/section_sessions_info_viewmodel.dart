@@ -1,9 +1,10 @@
 import 'package:regardless_site/ui/common/app_strings.dart';
-import 'package:stacked/stacked.dart';
 
+import '../../../app/app.dialogs.dart';
+import '../base/view_model.dart';
 import '../section_download_app/section_download_app_view.dart';
 
-class SectionSessionsInfoViewModel extends BaseViewModel {
+class SectionSessionsInfoViewModel extends ViewModel {
   final List<RegardlessText> texts = [
     RegardlessText(
         text: kIndividualTrainingText,
@@ -18,4 +19,11 @@ class SectionSessionsInfoViewModel extends BaseViewModel {
         words: ['Corporate Training'],
         imageAsset: 'assets/coporate.jpeg'),
   ];
+
+  showBookNowDialog(RegardlessText r) {
+    dialogService.showCustomDialog(
+        variant: DialogType.infoAlert,
+        data: RegardlessText(
+            text: r.words.fold('', (acc, b) => '$acc $b').trim(), imageAsset: r.imageAsset));
+  }
 }

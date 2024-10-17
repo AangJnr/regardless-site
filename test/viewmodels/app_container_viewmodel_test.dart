@@ -4,7 +4,7 @@ import 'package:regardless_site/app/app.locator.dart';
 import '../helpers/test_helpers.dart';
 
 void main() {
-  group('SectionSessionsInfoViewModel Tests -', () {
+  group('AppContainerViewModel Tests -', () {
     setUp(() => registerServices());
     tearDown(() => locator.reset());
   });

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:regardless_site/ui/views/app_container/app_container_view.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:stacked/stacked.dart';
 
@@ -15,9 +16,11 @@ class TermsView extends StackedView<TermsViewModel> {
     TermsViewModel viewModel,
     Widget? child,
   ) {
-    return ScreenTypeLayout.builder(
-      mobile: (_) => const TermsViewMobile(),
-      desktop: (_) => const TermsViewDesktop(),
+    return AppContainerView(
+      child: ScreenTypeLayout.builder(
+        mobile: (_) => const TermsViewMobile(),
+        desktop: (_) => const TermsViewDesktop(),
+      ),
     );
   }
 

@@ -30,7 +30,7 @@ class PrimaryButtonWidget extends StatelessWidget {
           elevation: 1,
           shape: shape ??
               RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(30.0),
+                borderRadius: BorderRadius.circular(10.0),
               ),
           minimumSize: Size(isFullWidth ? double.infinity : 130.0, 40.0),
           backgroundColor: color),
@@ -66,8 +66,8 @@ class PrimaryButtonWidget extends StatelessWidget {
                                   : textColor,
                               fontWeight: FontWeight.w600,
                             ),
-                  ),
+                  ) ,
                 )),
-    ).scaleOnHover();
+    );
   }
 }

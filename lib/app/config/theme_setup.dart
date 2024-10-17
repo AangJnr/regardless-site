@@ -72,7 +72,7 @@ class AppColors {
   //   static const accentColorAlt2 = Color.fromARGB(255, 207, 155, 24);
   static final accentColorText =
       Color.fromARGB(255, 111, 243, 71).withGreen(210);
-  static const accentColor = Color(0xffbff347);
+  static const accentColor = Color.fromARGB(255, 125, 243, 71);
   static const accentColorAlt = Color(0xffbdc3c7);
   static const accentColorAlt2 = Color(0xff4B5258);
   static const primaryColor = Color(0xFF151515);

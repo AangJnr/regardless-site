@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
+import '../../../app/config/theme_setup.dart';
 import 'shop_viewmodel.dart';
 
 class ShopViewDesktop extends ViewModelWidget<ShopViewModel> {
@@ -8,16 +9,9 @@ class ShopViewDesktop extends ViewModelWidget<ShopViewModel> {
 
   @override
   Widget build(BuildContext context, ShopViewModel viewModel) {
-    return const Scaffold(
-      body: Center(
-        child: Text(
-          'Hello, DESKTOP UI!',
-          style: TextStyle(
-            fontSize: 35,
-            fontWeight: FontWeight.w900,
-          ),
-        ),
-      ),
-    );
+    return Container(
+        decoration: BoxDecoration(color: AppColors.canvasColor),
+        height: 700,
+        child: SizedBox());
   }
 }

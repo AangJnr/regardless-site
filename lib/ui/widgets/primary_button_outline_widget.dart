@@ -7,7 +7,7 @@ class PrimaryButtonOutlineWidget extends StatelessWidget {
   final Function? onClick;
   final Size? size;
   final double radius;
-  final Color? textColor;
+  final Color  color;
   final Widget? child;
   final bool isFullWidth;
   final bool isCompact;
@@ -15,12 +15,12 @@ class PrimaryButtonOutlineWidget extends StatelessWidget {
   const PrimaryButtonOutlineWidget(this.onClick,
       {Key? key,
       this.child,
-      this.radius = 30.0,
+      this.radius = 10.0,
       this.size = const Size(130.0, 40.0),
       this.textLabel = "",
       this.isCompact = false,
       this.isFullWidth = false,
-      this.textColor = AppColors.blackColor})
+      this.color = AppColors.blackColor})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -32,7 +32,7 @@ class PrimaryButtonOutlineWidget extends StatelessWidget {
         minimumSize: isFullWidth
             ? Size(isFullWidth ? double.infinity : 130.0, 40.0)
             : size,
-        side: const BorderSide(color: AppColors.primaryColor, width: 1),
+        side:   BorderSide(color: color , width: 1),
       ),
       onPressed: () => onClick?.call(),
       child: child ??
@@ -45,7 +45,7 @@ class PrimaryButtonOutlineWidget extends StatelessWidget {
               style: Theme.of(context).primaryTextTheme.bodyMedium?.copyWith(
                     fontSize: isCompact ? 13 : 15.0,
                     letterSpacing: -0.5,
-                    color: textColor,
+                    color: color,
                     fontWeight: FontWeight.w600,
                   ),
             ),

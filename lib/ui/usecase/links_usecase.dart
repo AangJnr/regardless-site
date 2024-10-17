@@ -1,9 +1,11 @@
 import 'package:flutter/widgets.dart';
 import 'package:regardless_site/app/app.router.dart';
+import 'package:regardless_site/extensions/hover_extensions.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../app/app.locator.dart';
+import '../common/app_strings.dart';
 
 class LinksUseCase {
   final ScrollController? scrollController;
@@ -33,14 +35,14 @@ class LinksUseCase {
   }
 
   void goToPage(String page) {
-    switch (page.toLowerCase()) {
+    switch (page.stripExtra()) {
       case "home":
         _navigationService.navigateToHomeView();
         break;
-      case "terms":
+      case terms:
         _navigationService.navigateToTerms();
         break;
-      case "policy":
+      case policy:
         _navigationService.navigateToPolicy();
         break;
       case "facebook":
@@ -59,8 +61,20 @@ class LinksUseCase {
       case "whatsapp":
         launchUrl(Uri.parse("https://wa.me/+233550188881"));
         break;
-      case "faq":
+      case faq:
         _navigationService.navigateToFaqView();
+        break;
+      case shop:
+        _navigationService.navigateToShopView();
+        break;
+      case 'mobileapp':
+        _navigationService.navigateToSectionDownloadAppView();
+        break;
+      case contact:
+        _navigationService.navigateToSectionContactUsView();
+        break;
+      case 'trainingservices':
+        _navigationService.navigateToSectionSessionsInfoView();
         break;
     }
   }

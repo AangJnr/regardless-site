@@ -11,7 +11,7 @@ class ShopViewMobile extends ViewModelWidget<ShopViewModel> {
     return const Scaffold(
       body: Center(
         child: Text(
-          'Hello, MOBILE UI!',
+          'Regardless Shop Coming Soon!',
           style: TextStyle(
             fontSize: 35,
             fontWeight: FontWeight.w900,

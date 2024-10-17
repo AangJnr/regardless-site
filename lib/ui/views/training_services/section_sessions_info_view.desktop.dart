@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:regardless_site/ui/common/ui_helpers.dart';
+  import 'package:regardless_site/ui/widgets/primary_button_outline_widget.dart';
 import 'package:regardless_site/ui/widgets/regardless_text.dart';
 import 'package:stacked/stacked.dart';
 
@@ -18,8 +19,7 @@ class SectionSessionsInfoViewDesktop
       Container(
           decoration: BoxDecoration(
               color: Colors.black,
-              borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(6), topRight: Radius.circular(6))),
+              ),
           height: 700,
           child: Stack(children: [
             Image.asset(
@@ -90,8 +90,12 @@ class SectionSessionsInfoViewDesktop
                   (e) => Column(children: [
                     Row(
                         children: e.imageAsset?.contains('group') == true
-                            ? _buildChildWidgets(context, e).reversed.toList()
-                            : _buildChildWidgets(context, e)),
+                            ? _buildChildWidgets(
+                                    context, viewModel, e)
+                                .reversed
+                                .toList()
+                            : _buildChildWidgets(
+                                context, viewModel, e)),
                     verticalSpaceLarge
                   ]),
                 )
@@ -100,24 +104,39 @@ class SectionSessionsInfoViewDesktop
     ]);
   }
 
-  List<Widget> _buildChildWidgets(BuildContext context, RegardlessText e) {
+  List<Widget> _buildChildWidgets(
+      BuildContext context, SectionSessionsInfoViewModel viewModel, RegardlessText e) {
     return [
       Expanded(
           flex: 2,
           child: Center(
               child: SizedBox(
-            child: RegardlessTextWidget(
-              text: e.text,
-              textAlign: TextAlign.start,
-              words: e.words,
-              style: Theme.of(context)
-                  .textTheme
-                  .bodyMedium
-                  ?.copyWith(fontSize: 14, color: AppColors.whiteColor),
-              wordsTextStyle: Theme.of(context).textTheme.titleLarge?.copyWith(
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                  color: AppColors.accentColorText),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                RegardlessTextWidget(
+                  text: e.text,
+                  textAlign: TextAlign.start,
+                  words: e.words,
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyMedium
+                      ?.copyWith(fontSize: 14, color: AppColors.whiteColor),
+                  wordsTextStyle: Theme.of(context)
+                      .textTheme
+                      .titleLarge
+                      ?.copyWith(
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold,
+                          color: AppColors.accentColorText),
+                ),
+                verticalSpaceMedium,
+                PrimaryButtonOutlineWidget(
+                  ()=>viewModel.showBookNowDialog(e),
+                  textLabel: 'Book Now',
+                 color: AppColors.whiteColor,
+                )
+              ],
             ),
           ))),
       horizontalSpaceMassive,

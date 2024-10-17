@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:responsive_builder/responsive_builder.dart';
-import 'package:stacked/stacked.dart';
+import 'package:regardless_site/ui/views/section_featured/section_featured_view.dart';
+ import 'package:stacked/stacked.dart';
 
-import 'shop_view.desktop.dart';
-import 'shop_view.mobile.dart';
+import '../app_container/app_container_view.dart';
 import 'shop_viewmodel.dart';
 
 class ShopView extends StackedView<ShopViewModel> {
@@ -15,9 +14,12 @@ class ShopView extends StackedView<ShopViewModel> {
     ShopViewModel viewModel,
     Widget? child,
   ) {
-    return ScreenTypeLayout.builder(
-      mobile: (_) => const ShopViewMobile(),
-      desktop: (_) => const ShopViewDesktop(),
+    return AppContainerView(
+      child: SectionFeaturedView(),
+      //  ScreenTypeLayout.builder(
+      //   mobile: (_) => const ShopViewMobile(),
+      //   desktop: (_) => const ShopViewDesktop(),
+      // ),
     );
   }
 
