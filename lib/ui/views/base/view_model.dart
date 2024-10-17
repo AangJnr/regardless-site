@@ -4,7 +4,6 @@ import 'package:stacked_services/stacked_services.dart';
 
 import '../../../app/app.locator.dart';
 import '../../usecase/links_usecase.dart';
-import '../terms/terms_view.dart';
 
 class ViewModel extends BaseViewModel {
   final linkUseCase = LinksUseCase();
@@ -21,5 +20,9 @@ class ViewModel extends BaseViewModel {
 
   goToPolicyView() {
     navigationService.navigateToPolicy();
+  }
+
+  back() {
+    navigationService.back();
   }
 }

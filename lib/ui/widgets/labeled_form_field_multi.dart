@@ -21,7 +21,7 @@ class MultiLineLabeledFormField extends StatelessWidget {
   final TextInputAction textInputAction;
   final String? errorMessage;
   final TextEditingController? controller;
-
+  final bool hasError;
   TextEditingController c = TextEditingController();
 
   MultiLineLabeledFormField(
@@ -42,7 +42,8 @@ class MultiLineLabeledFormField extends StatelessWidget {
       this.textInputAction = TextInputAction.next,
       this.initialValue,
       this.textCapitalization = TextCapitalization.none,
-      this.onSaved});
+      this.onSaved,
+      this.hasError = false});
 
   @override
   Widget build(BuildContext context) {
@@ -119,8 +120,9 @@ class MultiLineLabeledFormField extends StatelessWidget {
               borderSide: const BorderSide(width: 1, color: AppColors.pageBg)),
           focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
-              borderSide:
-                  const BorderSide(width: 1.5, color: AppColors.blackColor)),
+              borderSide: BorderSide(
+                  width: 1.5,
+                  color: hasError ? AppColors.error : AppColors.blackColor)),
           suffixIcon:
               Padding(padding: const EdgeInsets.all(12.0), child: suffixIcon),
         ),

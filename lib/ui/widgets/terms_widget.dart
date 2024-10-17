@@ -34,12 +34,12 @@ class TermsAndPrivacyPolicyWidget extends StackedView<TermsViewModel> {
       textAlign: textAlign,
       wordsTextStyle: Theme.of(context).primaryTextTheme.bodySmall?.copyWith(
             fontWeight: FontWeight.w700,
-            height: 1.4,
+            height: 2,
             fontSize: 11,
             decoration: TextDecoration.underline,
           ),
       style: Theme.of(context).primaryTextTheme.bodySmall?.copyWith(
-            height: 1.4,
+            height: 2,
             fontSize: 11,
           ),
     );

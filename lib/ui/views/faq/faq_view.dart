@@ -3,7 +3,7 @@ import 'package:responsive_builder/responsive_builder.dart';
 import 'package:stacked/stacked.dart';
 
 import 'faq_view.desktop.dart';
- import 'faq_view.mobile.dart';
+import 'faq_view.mobile.dart';
 import 'faq_viewmodel.dart';
 
 class FaqView extends StackedView<FaqViewModel> {
@@ -17,7 +17,7 @@ class FaqView extends StackedView<FaqViewModel> {
   ) {
     return ScreenTypeLayout.builder(
       mobile: (_) => const FaqViewMobile(),
-       desktop: (_) => const FaqViewDesktop(),
+      desktop: (_) => const FaqViewDesktop(),
     );
   }
 

@@ -6,20 +6,29 @@ class SectionDownloadAppViewModel extends BaseViewModel {
   late final AnimationController _controller;
   UniqueKey _animationKey = UniqueKey();
   UniqueKey get animationKey => _animationKey;
-  SectionDownloadAppViewModel(_sectionDownloadState) {
+  SectionDownloadAppViewModel(sectionDownloadState) {
     _controller = AnimationController(
-        vsync: _sectionDownloadState, duration: Duration(milliseconds: 3500));
+        vsync: sectionDownloadState, duration: Duration(milliseconds: 3500))
+      ..addListener(() {
+        rebuildUi();
+        print(_controller.value);
+      });
+
+    toggleAnimation();
   }
   AnimationController get controller => _controller;
+  void toggleAnimation([VisibilityInfo? info]) {
+    // if (controller.isAnimating) {
+    //   return;
+    // }
 
-  void toggleAnimation(VisibilityInfo info) {
-    if (controller.isAnimating) {
-      return;
-    }
-    if (info.visibleFraction < 0.2) {
-      controller.reverse();
-    } else {
+    Future.delayed(Duration(seconds: 2)).then((v) {
       controller.forward();
-    }
+    });
+    // if (info.visibleFraction < 0.2) {
+    //   controller.reverse();
+    // } else {
+    //   controller.forward();
+    // }
   }
 }

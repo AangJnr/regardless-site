@@ -3,7 +3,9 @@ import 'dart:async';
 import 'package:flutter/widgets.dart';
 import 'package:stacked/stacked.dart';
 
-class SectionFeaturedViewModel extends BaseViewModel {
+import '../base/view_model.dart';
+
+class SectionFeaturedViewModel extends ViewModel {
   SectionFeaturedViewModel() {
     timer = Timer.periodic(const Duration(seconds: 3), (timer) {
       animateToPage((_currentPage + 1) % images.length);
