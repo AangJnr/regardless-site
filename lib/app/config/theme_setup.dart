@@ -124,7 +124,7 @@ class AppColors {
   static const process = Color(0xFFffC640);
   static const links = Color(0xFF22B0FB);
 
-  static const secondartTextColor = Color.fromARGB(255, 111, 111, 111);
+  static const secondartTextColor = Color.fromARGB(255, 150, 150, 150);
   static const tertiaryTextColor = Color.fromARGB(255, 199, 199, 199);
 
   static const whiteColor = Color(0xFFFFFFFF);

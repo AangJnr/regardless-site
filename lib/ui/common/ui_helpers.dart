@@ -22,6 +22,9 @@ const Widget verticalSpaceMedium = SizedBox(height: _mediumSize);
 const Widget verticalSpaceLarge = SizedBox(height: _largeSize);
 const Widget verticalSpaceMassive = SizedBox(height: _massiveSize);
 
+Widget responsiveVerticalSpaceMedium(BuildContext c) =>
+    SizedBox(height: getResponsiveVerticalSpaceMedium(c));
+
 Widget spacedDivider = const Column(
   children: <Widget>[
     verticalSpaceMedium,

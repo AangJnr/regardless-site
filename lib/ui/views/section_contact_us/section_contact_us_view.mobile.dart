@@ -33,7 +33,7 @@ class SectionContactUsViewMobile
               children: [
                 RegardlessTextWidget(
                   text: 'Let\'s Get In Touch',
-                  words: ['Touch'],
+                  words: ['Touch'],textAlign: TextAlign.start,
                   style: Theme.of(context)
                       .textTheme
                       .headlineLarge
@@ -66,24 +66,18 @@ class SectionContactUsViewMobile
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 verticalSpaceLarge,
-                Row(
-                  children: [
-                    Expanded(
-                        child: LabeledFormField(
-                      label: "First name, Last Name",
-                      isRequired: true,
-                      controller: nameController,
-                      hasError: viewModel.hasNameValidationMessage,
-                      errorMessage: viewModel.nameValidationMessage,
-                    )),
-                    horizontalSpaceMedium,
-                    Expanded(
-                        child: LabeledFormField(
-                      label: "Phone (eg. + 233 200 000 000)",
-                      controller: nameController,
-                    ))
-                  ],
-                ),
+                LabeledFormField(
+                                  label: "First name, Last Name",
+                                  isRequired: true,
+                                  controller: nameController,
+                                  hasError: viewModel.hasNameValidationMessage,
+                                  errorMessage: viewModel.nameValidationMessage,
+                                ),
+                verticalSpaceMedium,
+                LabeledFormField(
+                                  label: "Phone (eg. + 233 200 000 000)",
+                                  controller: nameController,
+                                ),
                 verticalSpaceMedium,
                 LabeledFormField(
                   label: "Email",

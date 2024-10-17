@@ -29,9 +29,19 @@ class HeaderWidget extends StatelessWidget {
       mobile: (context) => Container(
         padding: padding,
         margin: margin,
-        child: Wrap(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
           children: [
-            ..._buildOptionsWidget(context, useCase ),
+            if (showLogo) ...[
+              AppLogoWidget(size: Size(25, 25)),
+              verticalSpaceMedium,
+            ],
+            Wrap(
+              children: [
+                ..._buildOptionsWidget(context, useCase, true),
+              ],
+            ),
           ],
         ),
       ),
@@ -50,7 +60,7 @@ class HeaderWidget extends StatelessWidget {
               horizontalSpaceSmall,
               Spacer()
             ],
-            ..._buildOptionsWidget(context, useCase ),
+            ..._buildOptionsWidget(context, useCase, false),
             // horizontalSpaceLarge,
             // PrimaryButtonWidget(
             //   () => useCase.goToPage('shop'),
@@ -65,7 +75,7 @@ class HeaderWidget extends StatelessWidget {
   }
 
   List<Widget> _buildOptionsWidget(
-          BuildContext context, LinksUseCase useCase ) =>
+          BuildContext context, LinksUseCase useCase, bool isMobile) =>
       [
         'Home',
         'Training Services',
@@ -79,8 +89,9 @@ class HeaderWidget extends StatelessWidget {
                     color: _isSelected(link)
                         ? AppColors.accentColor
                         : AppColors.transparent),
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                padding: isMobile
+                    ? const EdgeInsets.symmetric(horizontal: 8, vertical: 6)
+                    : const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                 child: GestureDetector(
                   onTap: () => useCase.goToPage(link),
                   child: Text(

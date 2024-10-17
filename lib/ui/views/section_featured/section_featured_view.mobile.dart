@@ -21,7 +21,6 @@ class SectionFeaturedViewMobile
               height: 500,
               width: double.infinity,
               child: _buildGridWidget(viewModel)),
-          verticalSpaceMedium,
 
           RegardlessTextWidget(
             text: 'Coming Soon!',

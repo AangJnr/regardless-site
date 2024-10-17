@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
-import '../../../app/config/theme_setup.dart';
-import '../../common/app_constants.dart';
+ import '../../common/app_constants.dart';
 import '../../common/ui_helpers.dart';
 import '../../widgets/footer.dart';
 import '../../widgets/header.dart';
 import 'app_container_viewmodel.dart';
 
 class AppContainerViewDesktop extends ViewModelWidget<AppContainerViewModel> {
-  const AppContainerViewDesktop({required this.child, super.key});
+  const AppContainerViewDesktop({required this.child, required this.canvasColor,super.key});
+  final Color canvasColor;
 
   final Widget child;
   @override
   Widget build(BuildContext context, AppContainerViewModel viewModel) {
     return Scaffold(
-      backgroundColor: AppColors.canvasColor,
+      backgroundColor:  canvasColor,
       body: Center(
         child: SizedBox(
           width: kdDesktopMaxContentWidth,

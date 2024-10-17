@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:regardless_site/ui/views/section_featured/section_featured_view.dart';
  import 'package:stacked/stacked.dart';
 
+import '../../../app/config/theme_setup.dart';
 import '../app_container/app_container_view.dart';
 import 'shop_viewmodel.dart';
 
@@ -14,7 +15,7 @@ class ShopView extends StackedView<ShopViewModel> {
     ShopViewModel viewModel,
     Widget? child,
   ) {
-    return AppContainerView(
+    return AppContainerView(canvasColor: AppColors.whiteColor,
       child: SectionFeaturedView(),
       //  ScreenTypeLayout.builder(
       //   mobile: (_) => const ShopViewMobile(),
