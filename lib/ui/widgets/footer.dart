@@ -62,16 +62,18 @@ class FooterWidget extends StatelessWidget {
                         ],
                       ),
                       verticalSpaceMedium,
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          _quickLinksColumnOne(eContext, useCase),
-                          horizontalSpaceMedium,
-                          _quickLinksColumnTwo(eContext, useCase),
-                          horizontalSpaceMedium,
-                          _quickLinksColumnThree(eContext, useCase),
-                        ],
+                      SingleChildScrollView(scrollDirection: Axis.horizontal,
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            _quickLinksColumnOne(eContext, useCase),
+                            horizontalSpaceMedium,
+                            _quickLinksColumnTwo(eContext, useCase),
+                            horizontalSpaceMedium,
+                            _quickLinksColumnThree(eContext, useCase),
+                          ],
+                        ),
                       ),
                     ],
                   ),

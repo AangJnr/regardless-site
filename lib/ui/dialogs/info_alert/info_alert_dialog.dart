@@ -36,23 +36,143 @@ class InfoAlertDialog extends StackedView<InfoAlertDialogModel> {
   ) {
     final regardlessText = request.data as RegardlessText;
     return ScreenTypeLayout.builder(
-      desktop: (_) => Center(
-        child: SizedBox(
-          width: kdDesktopMaxContentWidth / 1.5,
-          height: kdDesktopMaxContentHeight / 2,
-          child: Row(
-            children: [
-              Expanded(
-                  flex: 4,
-                  child: Image.asset(
-                    regardlessText.imageAsset!,
-                    fit: BoxFit.cover,
-                    height: double.infinity,
-                    width: double.infinity,
-                  )),
-              Expanded(
-                flex: 5,
-                child: Material(
+      desktop: (_) =>
+          _buildDesktopLayout(regardlessText, viewModel, context, false),
+      mobile: (_) => OrientationLayoutBuilder(
+          landscape: (_) =>
+              _buildDesktopLayout(regardlessText, viewModel, context, true),
+          portrait: (_) =>
+              _buildMobileLayout(regardlessText, context, viewModel)),
+    );
+  }
+
+  Center _buildMobileLayout(RegardlessText regardlessText, BuildContext context,
+      InfoAlertDialogModel viewModel) {
+    return Center(
+      child: Container(
+        color: Colors.white,
+        constraints: BoxConstraints(maxHeight: 600),
+        margin: const EdgeInsets.all(16.0),
+        child: Column(
+          children: [
+            Image.asset(
+              regardlessText.imageAsset!,
+              fit: BoxFit.cover,
+              height: 200,
+              width: double.infinity,
+            ),
+            Material(
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 16),
+                          child: Text(
+                            'Booking Request',
+                            style: Theme.of(context)
+                                .primaryTextTheme
+                                .displaySmall
+                                ?.copyWith(fontSize: 25),
+                          ),
+                        ),
+                        const Spacer(),
+                        MaterialInkWell(
+                          radiusValue: 20,
+                          padding: EdgeInsets.all(16),
+                          onTap: viewModel.back,
+                          child: FaIcon(
+                            FontAwesomeIcons.xmark,
+                            size: 20,
+                          ),
+                        )
+                      ],
+                    ),
+                    verticalSpaceMedium,
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      child: RegardlessTextWidget(
+                        textAlign: TextAlign.start,
+                        words: [regardlessText.text],
+                        text:
+                            'Please enter your email address to finalize your booking for ${regardlessText.text}. Our team will be in touch shortly to confirm your request and provide further details.',
+                        wordsTextStyle: Theme.of(context)
+                            .primaryTextTheme
+                            .bodyMedium
+                            ?.copyWith(
+                                fontSize: 13,
+                                color: AppColors.blackColor600,
+                                fontWeight: FontWeight.bold),
+                        style: Theme.of(context)
+                            .primaryTextTheme
+                            .bodyMedium
+                            ?.copyWith(
+                                fontSize: 13, color: AppColors.blackColor600),
+                      ),
+                    ),
+                    verticalSpaceSmall,
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      child: LabeledFormField(
+                        label: 'Enter your email address',
+                        onChanged: viewModel.updateEmail,
+                        initialValue: viewModel.email,
+                      ),
+                    ),
+                    verticalSpaceSmall,
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      child: PrimaryButtonWidget(
+                        viewModel.isValid
+                            ? () => viewModel.sendRequest(regardlessText.text)
+                            : null,
+                        textLabel: 'Send Request',
+                        isLoading: viewModel.isBusy,
+                        isFullWidth: true,
+                      ),
+                    ),
+                    verticalSpaceSmall,
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      child: SocialsWidget(),
+                    ),
+                    verticalSpaceSmall
+                  ],
+                ),
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+
+  Center _buildDesktopLayout(RegardlessText regardlessText,
+      InfoAlertDialogModel viewModel, BuildContext context, bool isMobile) {
+    return Center(
+      child: SizedBox(
+        width: isMobile
+            ? (screenWidth(context) - 60)
+            : kdDesktopMaxContentWidth / 1.5,
+        height: isMobile
+            ? (screenHeight(context) - 40)
+            : kdDesktopMaxContentHeight / 2,
+        child: Row(
+          children: [
+            Expanded(
+                flex: 4,
+                child: Image.asset(
+                  regardlessText.imageAsset!,
+                  fit: BoxFit.cover,
+                  height: double.infinity,
+                  width: double.infinity,
+                )),
+            Expanded(
+              flex: 5,
+              child: Material(
+                child: SingleChildScrollView(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -70,20 +190,22 @@ class InfoAlertDialog extends StackedView<InfoAlertDialogModel> {
                           )
                         ],
                       ),
-                      verticalSpaceMedium,
+                      spacingLarge(isMobile),
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 60),
+                        padding:
+                            EdgeInsets.symmetric(horizontal: isMobile ? 20 : 60),
                         child: Text(
                           'Booking Request',
                           style: Theme.of(context)
                               .primaryTextTheme
                               .displaySmall
-                              ?.copyWith(fontSize: 50),
+                              ?.copyWith(fontSize: isMobile ? 22 : 50),
                         ),
                       ),
-                      verticalSpaceLarge,
+                      spacingLarge(isMobile),
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 60),
+                        padding:
+                            EdgeInsets.symmetric(horizontal: isMobile ? 20 : 60),
                         child: RegardlessTextWidget(
                           textAlign: TextAlign.start,
                           words: [regardlessText.text],
@@ -103,18 +225,20 @@ class InfoAlertDialog extends StackedView<InfoAlertDialogModel> {
                                   fontSize: 13, color: AppColors.blackColor600),
                         ),
                       ),
-                      verticalSpaceMedium,
+                      spacingMedium(isMobile),
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 60),
+                        padding:
+                            EdgeInsets.symmetric(horizontal: isMobile ? 20 : 60),
                         child: LabeledFormField(
                           label: 'Enter your email address',
                           onChanged: viewModel.updateEmail,
                           initialValue: viewModel.email,
                         ),
                       ),
-                      verticalSpaceMedium,
+                      spacingMedium(isMobile),
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 60),
+                        padding:
+                            EdgeInsets.symmetric(horizontal: isMobile ? 20 : 60),
                         child: PrimaryButtonWidget(
                           viewModel.isValid
                               ? () => viewModel.sendRequest(regardlessText.text)
@@ -124,125 +248,26 @@ class InfoAlertDialog extends StackedView<InfoAlertDialogModel> {
                           isFullWidth: true,
                         ),
                       ),
-                      verticalSpaceMedium,
+                      spacingMedium(isMobile),
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 60),
+                        padding:
+                            EdgeInsets.symmetric(horizontal: isMobile ? 20 : 60),
                         child: SocialsWidget(),
                       ),
-                      verticalSpaceLarge
+                      spacingLarge(isMobile)
                     ],
                   ),
                 ),
-              )
-            ],
-          ),
-        ),
-      ),
-      mobile: (_) => Center(
-        child: Container(color: Colors.white,
-          constraints: BoxConstraints(maxHeight: 400),
-          margin: const EdgeInsets.all(16.0),
-          child: Row(
-            children: [
-              Expanded(
-                  flex: 4,
-                  child: Image.asset(
-                    regardlessText.imageAsset!,
-                    fit: BoxFit.cover,
-                    height: double.infinity,
-                    width: double.infinity,
-                  )),
-              Expanded(
-                flex: 5,
-                child: Material(
-                  child: SingleChildScrollView(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          children: [
-                            const Spacer(),
-                            MaterialInkWell(
-                              radiusValue: 20,
-                              padding: EdgeInsets.all(16),
-                              onTap: viewModel.back,
-                              child: FaIcon(
-                                FontAwesomeIcons.xmark,
-                                size: 20,
-                              ),
-                            )
-                          ],
-                        ),
-                         Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 16),
-                          child: Text(
-                            'Booking Request',
-                            style: Theme.of(context)
-                                .primaryTextTheme
-                                .displaySmall
-                                ?.copyWith(fontSize: 25),
-                          ),
-                        ),
-                        verticalSpaceMedium,
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 16),
-                          child: RegardlessTextWidget(
-                            textAlign: TextAlign.start,
-                            words: [regardlessText.text],
-                            text:
-                                'Please enter your email address to finalize your booking for ${regardlessText.text}. Our team will be in touch shortly to confirm your request and provide further details.',
-                            wordsTextStyle: Theme.of(context)
-                                .primaryTextTheme
-                                .bodyMedium
-                                ?.copyWith(
-                                    fontSize: 13,
-                                    color: AppColors.blackColor600,
-                                    fontWeight: FontWeight.bold),
-                            style: Theme.of(context)
-                                .primaryTextTheme
-                                .bodyMedium
-                                ?.copyWith(
-                                    fontSize: 13, color: AppColors.blackColor600),
-                          ),
-                        ),
-                        verticalSpaceSmall,
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 16),
-                          child: LabeledFormField(
-                            label: 'Enter your email address',
-                            onChanged: viewModel.updateEmail,
-                            initialValue: viewModel.email,
-                          ),
-                        ),
-                        verticalSpaceSmall,
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 16),
-                          child: PrimaryButtonWidget(
-                            viewModel.isValid
-                                ? () => viewModel.sendRequest(regardlessText.text)
-                                : null,
-                            textLabel: 'Send Request',
-                            isLoading: viewModel.isBusy,
-                            isFullWidth: true,
-                          ),
-                        ),
-                        verticalSpaceSmall,
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 16),
-                          child: SocialsWidget(),
-                        ),
-                        verticalSpaceSmall
-                      ],
-                    ),
-                  ),
-                ),
-              )
-            ],
-          ),
+              ),
+            )
+          ],
         ),
       ),
     );
   }
+
+  Widget spacingMedium(bool isMobile) => isMobile ? SizedBox(height:10) : verticalSpaceMedium;
+  Widget spacingLarge(bool isMobile) => isMobile ? SizedBox(height:20) : verticalSpaceLarge;
 
   @override
   InfoAlertDialogModel viewModelBuilder(BuildContext context) =>

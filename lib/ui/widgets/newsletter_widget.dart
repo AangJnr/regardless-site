@@ -29,57 +29,55 @@ class NewsletterWidget extends StackedView<NewsLetterViewModel> {
       mobile: (_) => Container(
         color: AppColors.canvasColorAlt,
         padding: const EdgeInsets.symmetric(vertical: largeSize),
-        child: Column(
-          children: [
-            verticalSpaceSmall,
-            RegardlessTextWidget(
-              textAlign: TextAlign.start,
-              text: 'Sign Up to Our Newsletter and Get Special Offers',
-              words: ['Newsletter', 'Special Offers'],
-              style: Theme.of(context)
-                  .textTheme
-                  .headlineLarge
-                  ?.copyWith(color: AppColors.blackColor, fontSize: 18),
-              wordsTextStyle: Theme.of(context)
-                  .textTheme
-                  .headlineLarge
-                  ?.copyWith(color: AppColors.accentColorText, fontSize: 18),
-            ),
-            verticalSpaceMedium,
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal:10.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10.0),
+          child: Column(
+            children: [
+              verticalSpaceSmall,
+              RegardlessTextWidget(
+                textAlign: TextAlign.start,
+                text: 'Sign Up to Our Newsletter and Get Special Offers',
+                words: ['Newsletter', 'Special Offers'],
+                style: Theme.of(context)
+                    .textTheme
+                    .headlineLarge
+                    ?.copyWith(color: AppColors.blackColor, fontSize: 18),
+                wordsTextStyle: Theme.of(context)
+                    .textTheme
+                    .headlineLarge
+                    ?.copyWith(color: AppColors.accentColorText, fontSize: 18),
+              ),
+              verticalSpaceMedium,
+              Row(
                 children: [
-                  Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                     children: [
-                      SizedBox(
-                          width: 300,
-                          child: LabeledFormField(
-                            label: 'Your E-mail',
-                            onChanged: viewModel.setEmail,
-                            hasError: viewModel.emailError != null,
-                            errorMessage: viewModel.emailError,
-                          )),
-                       PrimaryButtonOutlineWidget(
-                        viewModel.isValid ? viewModel.subscribe : null,
-                        textLabel: 'Subscribe',
-                        isFullWidth: false,
-                      ),
-                    ],
+                  Expanded(
+                    flex: 3,
+                    child: LabeledFormField(
+                      label: 'Your E-mail',
+                      onChanged: viewModel.setEmail,
+                      hasError: viewModel.emailError != null,
+                      errorMessage: viewModel.emailError,
+                    ),
                   ),
-                  verticalSpaceTiny,
-                  TermsAndPrivacyPolicyWidget(
-                    text: kSubscribeNewsletterRationaleText,
-                    textAlign: TextAlign.start,
-                  )
+                  horizontalSpaceSmall,
+                  Expanded(
+                    flex: 2,
+                    child: PrimaryButtonOutlineWidget(
+                      viewModel.isValid ? viewModel.subscribe : null,
+                      textLabel: 'Subscribe',
+                      isFullWidth: false,
+                    ),
+                  ),
                 ],
               ),
-            ),
-            verticalSpaceSmall
-          ],
+              verticalSpaceTiny,
+              TermsAndPrivacyPolicyWidget(
+                text: kSubscribeNewsletterRationaleText,
+                textAlign: TextAlign.start,
+              ),
+              verticalSpaceSmall
+            ],
+          ),
         ),
       ),
       desktop: (_) => Container(
@@ -91,7 +89,7 @@ class NewsletterWidget extends StackedView<NewsLetterViewModel> {
               flex: 1,
             ),
             Flexible(
-                flex: 2,
+                flex: 3,
                 child: RegardlessTextWidget(
                   textAlign: TextAlign.start,
                   text: 'Sign Up to Our Newsletter and Get Special Offers',
@@ -108,7 +106,7 @@ class NewsletterWidget extends StackedView<NewsLetterViewModel> {
                 )),
             horizontalSpaceLarge,
             Flexible(
-                flex: 2,
+                flex: 3,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -118,7 +116,7 @@ class NewsletterWidget extends StackedView<NewsLetterViewModel> {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         SizedBox(
-                            width: 350,
+                            width: 300,
                             child: LabeledFormField(
                               label: 'Your E-mail',
                               onChanged: viewModel.setEmail,

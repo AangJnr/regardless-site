@@ -32,24 +32,14 @@ class _SectionDownloadState extends State<SectionDownloadAppView>
       child: ScreenTypeLayout.builder(
         mobile: (_) => Container(
           color: Colors.black,
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 10.0),
-                child: Row(
-                  children: [
-                    Expanded(flex: 2, child: _buildTitleWidget(context, true)),
-                    Expanded(
-                      flex: 3,
-                      child: _buildMockupWidget(),
-                    ),
-                  ],
-                ),
-              ),
-              BuildMetricsWidget(),
-            ],
-          ),
+          child: Column(mainAxisSize: MainAxisSize.min, children: [
+            Padding(
+              padding: const EdgeInsets.only(left: 10.0),
+              child: _buildTitleWidget(context, true),
+            ),
+            _buildMockupWidget(),
+            BuildMetricsWidget(),
+          ]),
         ),
         desktop: (_) => Column(
           children: [
@@ -88,7 +78,7 @@ class _SectionDownloadState extends State<SectionDownloadAppView>
             style: Theme.of(context)
                 .textTheme
                 .headlineLarge
-                ?.copyWith(color: Colors.white, fontSize: isMobile ? 18 : 45),
+                ?.copyWith(color: Colors.white, fontSize: isMobile ? 22 : 45),
           ),
           verticalSpaceMedium,
           Text(
@@ -109,7 +99,7 @@ class _SectionDownloadState extends State<SectionDownloadAppView>
         Expanded(
           child: GestureDetector(
             onTap: () {},
-            child: Container(
+            child: Container(constraints: BoxConstraints(maxWidth: 150),
               padding: EdgeInsets.all(2),
               decoration: BoxDecoration(
                   border: Border.all(width: 1.5, color: Colors.white70),
@@ -127,7 +117,7 @@ class _SectionDownloadState extends State<SectionDownloadAppView>
         Expanded(
           child: GestureDetector(
             onTap: () {},
-            child: Container(
+            child: Container(constraints: BoxConstraints(maxWidth: 150),
                 padding: EdgeInsets.all(2),
                 decoration: BoxDecoration(
                     border: Border.all(width: 1.5, color: Colors.white70),
@@ -139,27 +129,34 @@ class _SectionDownloadState extends State<SectionDownloadAppView>
                   fit: BoxFit.fitWidth,
                 )),
           ),
-        )
+        ),
+        horizontalSpaceSmall,
       ],
     );
   }
 
-  ClipRRect _buildMockupWidget() {
+  Widget _buildMockupWidget() {
     return ClipRRect(
-        child: Opacity(
-            opacity: _viewModel.controller.value,
-            child: Lottie.asset(
-              key: _viewModel.animationKey,
-              'assets/r_mockup.json',
-              repeat: false,
-              fit: BoxFit.fitHeight,
-              controller: _viewModel.controller,
-              onLoaded: (composition) {
-                // Configure the AnimationController with the duration of the
-                _viewModel.controller.duration = composition.duration;
-                _viewModel.toggleAnimation();
-              },
-            )));
+      child: Lottie.asset(
+        key: _viewModel.animationKey,
+        'assets/r_mockup.json',
+        repeat: false,
+        fit: BoxFit.fitHeight,
+        controller: _viewModel.controller,
+        onLoaded: (composition) {
+          // Configure the AnimationController with the duration of the
+          _viewModel.controller
+            ..duration = composition.duration
+            ..forward();
+        },
+      ),
+    );
+  }
+
+  @override
+  void dispose() {
+    _viewModel.controller.dispose();
+    super.dispose();
   }
 }
 

@@ -82,7 +82,7 @@ class SectionSessionsInfoViewDesktop
                 ))
           ])),
       Container(
-          padding: EdgeInsets.all(massiveSize),
+          padding: EdgeInsets.all(getResponsiveHorizontalSpaceMedium(context)),
           color: Colors.black87,
           child: Column(
             children: viewModel.texts
@@ -121,11 +121,11 @@ class SectionSessionsInfoViewDesktop
                   style: Theme.of(context)
                       .textTheme
                       .bodyMedium
-                      ?.copyWith(fontSize: 14, color: AppColors.whiteColor),
+                      ?.copyWith(fontSize: 14, color: AppColors.whiteColor, height: 1.6),
                   wordsTextStyle: Theme.of(context)
                       .textTheme
                       .titleLarge
-                      ?.copyWith(
+                      ?.copyWith(height: 2,
                           fontSize: 30,
                           fontWeight: FontWeight.bold,
                           color: AppColors.accentColorText),
@@ -139,7 +139,7 @@ class SectionSessionsInfoViewDesktop
               ],
             ),
           ))),
-      horizontalSpaceMassive,
+      horizontalSpaceLarge,
       Expanded(
           flex: 3,
           child: ClipRRect(

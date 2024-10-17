@@ -56,7 +56,7 @@ class LabeledFormField extends StatelessWidget {
       );
     }
     final theme =
-        Theme.of(context).primaryTextTheme.bodyMedium?.copyWith(fontSize: 14);
+        Theme.of(context).primaryTextTheme.bodySmall?.copyWith(fontSize: 13);
     return SizedBox(
       width: double.infinity,
       child: TextFormField(

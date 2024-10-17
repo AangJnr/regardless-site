@@ -17,40 +17,41 @@ class HomeViewMobile extends ViewModelWidget<HomeViewModel> {
   Widget build(BuildContext context, HomeViewModel viewModel) {
     return Scaffold(
       backgroundColor: AppColors.whiteColor,
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: AppLogoWidget(size: Size(40, 40)),
-          ),
-          Center(
-            child: RegardlessTextWidget(
-              text: 'Make Today Count!',
-              words: ['Count!'],
-              style: Theme.of(context)
-                  .textTheme
-                  .headlineLarge
-                  ?.copyWith(color: AppColors.blackColor, fontSize: 35),
-              wordsTextStyle: Theme.of(context)
-                  .textTheme
-                  .headlineLarge
-                  ?.copyWith(color: AppColors.accentColorText, fontSize: 35),
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: AppLogoWidget(size: Size(25, 25)),
             ),
-          ),
-          Image.asset(
-            'assets/header2.png',
-            fit: BoxFit.fitWidth,
-            width: double.infinity,
-          ),
-          Center(
-            child: HeaderWidget(
-              color: AppColors.whiteColor,
+            Center(
+              child: RegardlessTextWidget(
+                text: 'Make Today Count!',
+                words: ['Count!'],
+                style: Theme.of(context)
+                    .textTheme
+                    .headlineLarge
+                    ?.copyWith(color: AppColors.blackColor, fontSize: 25),
+                wordsTextStyle: Theme.of(context)
+                    .textTheme
+                    .headlineLarge
+                    ?.copyWith(color: AppColors.accentColorText, fontSize: 25),
+              ),
             ),
-          ),
-          Spacer(),
-          FooterBottomWidget()
-        ],
+            Image.asset(
+              'assets/header2.png',
+              fit: BoxFit.cover,
+              width: double.infinity,
+            ),
+            Center(
+              child: HeaderWidget(
+                color: AppColors.whiteColor,
+              ),
+            ),verticalSpaceMassive,
+            FooterBottomWidget()
+          ],
+        ),
       ),
     );
   }
