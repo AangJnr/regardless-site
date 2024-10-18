@@ -1,6 +1,9 @@
 import 'package:regardless_site/app/config/theme_setup.dart';
+import 'package:regardless_site/extensions/hover_extensions.dart';
 import 'package:regardless_site/ui/common/ui_helpers.dart';
 import 'package:flutter/material.dart';
+import 'package:regardless_site/ui/usecase/links_usecase.dart';
+import 'package:regardless_site/ui/widgets/social_widget.dart';
 import 'package:stacked/stacked.dart';
 
 import '../../widgets/app_logo.dart';
@@ -45,22 +48,59 @@ class HomeViewDesktop extends ViewModelWidget<HomeViewModel> {
             ),
           ),
           Positioned(
-            left: 0,
-            right: 0,
+            left: 200,
             bottom: 200,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                HeaderWidget(color: AppColors.whiteColor,),
-              ],
-            ),
+            child: _buildOptionWidget(
+                context, "MOBILE APP", viewModel.linkUseCase),
           ),
           Positioned(
               top: 40, left: 40, child: AppLogoWidget(size: Size(40, 40))),
-          Positioned(bottom: 20, left: 0, right: 0, child: FooterBottomWidget())
+          Positioned(
+              bottom: 20,
+              left: 0,
+              right: 0,
+              child: Row(
+                children: [
+                  Expanded(child: FooterBottomWidget()),
+                  SocialsWidget(),
+                  horizontalSpaceMedium
+                ],
+              )),
+          Positioned(
+            top: 150,
+            left: 80,
+            child: _buildOptionWidget(
+                context, "TRAINING SERVICES", viewModel.linkUseCase),
+          ),
+          Positioned(
+              top: 150,
+              right: 80,
+              child:
+                  _buildOptionWidget(context, "SHOP", viewModel.linkUseCase)),
+          Positioned(
+              bottom: 150,
+              right: 200,
+              child:
+                  _buildOptionWidget(context, "CONTACT", viewModel.linkUseCase))
         ],
       ),
     );
   }
+
+  Widget _buildOptionWidget(
+          BuildContext context, String title, LinksUseCase linkUseCase) =>
+      Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+        ),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+        child: GestureDetector(
+          onTap: () => linkUseCase.goToPage(title),
+          child: Text(
+            title,
+            style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                fontSize: 20, color: AppColors.blackColor600.withOpacity(0.8)),
+          ).underlineOnHover(),
+        ),
+      );
 }
