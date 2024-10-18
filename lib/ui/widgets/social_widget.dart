@@ -12,7 +12,7 @@ class SocialsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return Row(mainAxisSize: MainAxisSize.min,
         children: [
       Icon("Facebook", FontAwesomeIcons.facebook),
       Icon("Instagram", FontAwesomeIcons.instagram),
@@ -22,7 +22,7 @@ class SocialsWidget extends StatelessWidget {
     ]
             .map((e) => MaterialInkWell(
                 onTap: () {
-                   LinksUseCase().goToPage(e.text);
+                  LinksUseCase().goToPage(e.text);
                 },
                 radiusValue: 50,
                 padding: EdgeInsets.all(10),

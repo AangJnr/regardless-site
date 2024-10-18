@@ -86,9 +86,7 @@ class HeaderWidget extends StatelessWidget {
           .map((link) => Container(
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
-                    color: _isSelected(link)
-                        ? AppColors.accentColor
-                        : AppColors.transparent),
+                     ),
                 padding: isMobile
                     ? const EdgeInsets.symmetric(horizontal: 8, vertical: 6)
                     : const EdgeInsets.symmetric(horizontal: 16, vertical: 12),

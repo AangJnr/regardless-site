@@ -69,7 +69,7 @@ class _UnderlineOnHoverState extends State<UnderlineOnHover> {
             right: 0,
             bottom: 0,
             child: AnimatedOpacity(
-              duration: const Duration(milliseconds: 200),
+              duration: const Duration(milliseconds: 300),
               opacity: _isHovering ? 1.0 : 0.0,
               child: Container(
                 height: widget.underlineThickness,
