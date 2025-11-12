@@ -10,7 +10,7 @@ class SectionFeaturedViewModel extends ViewModel {
     timer = Timer.periodic(const Duration(seconds: 3), (timer) {
       animateToPage((_currentPage + 1) % images.length);
     });
-  }
+  }//placeholder images
   List<ImageWithColor> images = [
     ImageWithColor("assets/mockup1.png", Color.fromARGB(255, 254, 172, 247)),
     ImageWithColor("assets/mockup2.png", Color.fromARGB(255, 237, 120, 24)),
