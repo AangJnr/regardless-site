@@ -1,0 +1,11 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.regardless.social_app",
+      "sha256_cert_fingerprints":
+        ["B0:88:2E:5A:31:A1:DB:87:A1:B2:08:43:DB:62:1A:52:C2:3F:6C:04:68:35:FB:48:70:90:48:B4:DF:19:79:FE"]
+    }
+  }
+]
