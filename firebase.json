@@ -21,6 +21,10 @@
         "source": "/.well-known/assetlinks.json",
         "destination": "/.well-known/assetlinks.json"
       },
+                 {
+        "source": "/.well-known/apple-app-site-association",
+        "destination": "/.well-known/apple-app-site-association"
+      },
       {
         "source": "**",
         "destination": "/index.html"
