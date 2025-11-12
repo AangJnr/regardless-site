@@ -1,0 +1,26 @@
+{
+    "applinks": {
+        "details": [
+            {
+                "appIDs": [
+                    "44Q83Z7M5M.com.regardlessmode.app"
+                ],
+                "components": [
+                    {
+                        "#": "/app",
+                        "comment": "Matches any URL with a fragment that equals app and instructs the system to open it as a universal link."
+                    },
+                    {
+                        "/": "/app/*",
+                        "comment": "Matches any URL with a path that starts with /app/ and instructs the system to open it as a universal link."
+                    }
+                ]
+            }
+        ]
+    },
+    "webcredentials": {
+        "apps": [
+            "44Q83Z7M5M.com.regardlessmode.app"
+        ]
+    }
+}
