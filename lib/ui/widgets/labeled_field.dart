@@ -16,7 +16,7 @@ class LabeledTextField extends StatelessWidget {
   final Color enabledColor;
   final bool hasError;
   const LabeledTextField({
-    Key? key,
+    super.key,
     this.label = '',
     this.hint = "",
     this.isRequired = false,
@@ -27,7 +27,7 @@ class LabeledTextField extends StatelessWidget {
     this.textColor = AppColors.blackColor,
     this.value = '',
     this.hasError = false,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

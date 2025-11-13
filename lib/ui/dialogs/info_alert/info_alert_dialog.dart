@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:regardless_site/ui/common/app_colors.dart';
 import 'package:regardless_site/ui/common/ui_helpers.dart';
 import 'package:regardless_site/ui/views/section_download_app/section_download_app_view.dart';
 import 'package:regardless_site/ui/widgets/labeled_form_field.dart';
@@ -192,8 +191,8 @@ class InfoAlertDialog extends StackedView<InfoAlertDialogModel> {
                       ),
                       spacingLarge(isMobile),
                       Padding(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: isMobile ? 20 : 60),
+                        padding: EdgeInsets.symmetric(
+                            horizontal: isMobile ? 20 : 60),
                         child: Text(
                           'Booking Request',
                           style: Theme.of(context)
@@ -204,8 +203,8 @@ class InfoAlertDialog extends StackedView<InfoAlertDialogModel> {
                       ),
                       spacingLarge(isMobile),
                       Padding(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: isMobile ? 20 : 60),
+                        padding: EdgeInsets.symmetric(
+                            horizontal: isMobile ? 20 : 60),
                         child: RegardlessTextWidget(
                           textAlign: TextAlign.start,
                           words: [regardlessText.text],
@@ -227,8 +226,8 @@ class InfoAlertDialog extends StackedView<InfoAlertDialogModel> {
                       ),
                       spacingMedium(isMobile),
                       Padding(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: isMobile ? 20 : 60),
+                        padding: EdgeInsets.symmetric(
+                            horizontal: isMobile ? 20 : 60),
                         child: LabeledFormField(
                           label: 'Enter your email address',
                           onChanged: viewModel.updateEmail,
@@ -237,8 +236,8 @@ class InfoAlertDialog extends StackedView<InfoAlertDialogModel> {
                       ),
                       spacingMedium(isMobile),
                       Padding(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: isMobile ? 20 : 60),
+                        padding: EdgeInsets.symmetric(
+                            horizontal: isMobile ? 20 : 60),
                         child: PrimaryButtonWidget(
                           viewModel.isValid
                               ? () => viewModel.sendRequest(regardlessText.text)
@@ -250,8 +249,8 @@ class InfoAlertDialog extends StackedView<InfoAlertDialogModel> {
                       ),
                       spacingMedium(isMobile),
                       Padding(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: isMobile ? 20 : 60),
+                        padding: EdgeInsets.symmetric(
+                            horizontal: isMobile ? 20 : 60),
                         child: SocialsWidget(),
                       ),
                       spacingLarge(isMobile)
@@ -266,8 +265,10 @@ class InfoAlertDialog extends StackedView<InfoAlertDialogModel> {
     );
   }
 
-  Widget spacingMedium(bool isMobile) => isMobile ? SizedBox(height:10) : verticalSpaceMedium;
-  Widget spacingLarge(bool isMobile) => isMobile ? SizedBox(height:20) : verticalSpaceLarge;
+  Widget spacingMedium(bool isMobile) =>
+      isMobile ? SizedBox(height: 10) : verticalSpaceMedium;
+  Widget spacingLarge(bool isMobile) =>
+      isMobile ? SizedBox(height: 20) : verticalSpaceLarge;
 
   @override
   InfoAlertDialogModel viewModelBuilder(BuildContext context) =>

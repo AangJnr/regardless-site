@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:regardless_site/extensions/hover_extensions.dart';
 
 import '../../../../app/config/theme_setup.dart';
 
@@ -66,7 +65,7 @@ class PrimaryButtonWidget extends StatelessWidget {
                                   : textColor,
                               fontWeight: FontWeight.w600,
                             ),
-                  ) ,
+                  ),
                 )),
     );
   }

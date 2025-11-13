@@ -25,7 +25,7 @@ class LabeledFormField extends StatelessWidget {
   TextEditingController c = TextEditingController();
 
   LabeledFormField(
-      {Key? key,
+      {super.key,
       this.label = '',
       this.hint = "",
       this.isRequired = false,
@@ -43,8 +43,7 @@ class LabeledFormField extends StatelessWidget {
       this.textInputAction = TextInputAction.next,
       this.initialValue,
       this.textCapitalization = TextCapitalization.none,
-      this.onSaved})
-      : super(key: key);
+      this.onSaved});
 
   @override
   Widget build(BuildContext context) {

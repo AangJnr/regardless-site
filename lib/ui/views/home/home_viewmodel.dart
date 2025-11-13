@@ -4,8 +4,6 @@ import 'package:regardless_site/app/app.dialogs.dart';
 import 'package:regardless_site/app/app.locator.dart';
 import 'package:regardless_site/ui/common/app_strings.dart';
 import 'package:regardless_site/ui/views/section_download_app/section_download_app_view.dart';
-import 'package:stacked/stacked.dart';
-import 'package:stacked_services/stacked_services.dart';
 
 import '../base/view_model.dart';
 

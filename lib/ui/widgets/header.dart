@@ -85,8 +85,8 @@ class HeaderWidget extends StatelessWidget {
       ]
           .map((link) => Container(
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                     ),
+                  borderRadius: BorderRadius.circular(10),
+                ),
                 padding: isMobile
                     ? const EdgeInsets.symmetric(horizontal: 8, vertical: 6)
                     : const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
@@ -132,7 +132,6 @@ class BreadcrumbsWidget extends StatelessWidget {
           .trim()
           .split("/")
           .where((e) => e.isNotEmpty)
-          .toList()
     ];
     if (items.length == 1) return const SizedBox.shrink();
     return Wrap(

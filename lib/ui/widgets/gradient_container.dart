@@ -9,8 +9,7 @@ class GradientContainer extends StatelessWidget {
       this.margin,
       this.blendColor = Colors.transparent,
       this.size = const Size(double.infinity, double.infinity),
-      Key? key})
-      : super(key: key);
+      super.key});
   final Widget? child;
   final Size size;
   final double radius;

@@ -8,7 +8,6 @@ import 'package:stacked/stacked.dart';
 
 import '../../widgets/app_logo.dart';
 import '../../widgets/footer_bottom.dart';
-import '../../widgets/header.dart';
 import '../../widgets/regardless_text.dart';
 import 'home_viewmodel.dart';
 

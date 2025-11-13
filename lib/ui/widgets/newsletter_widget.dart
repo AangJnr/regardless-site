@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:regardless_site/ui/widgets/labeled_form_field.dart';
-import 'package:regardless_site/ui/widgets/primary_button_widget.dart';
 import 'package:regardless_site/ui/widgets/regardless_text.dart';
 import 'package:regardless_site/ui/widgets/terms_widget.dart';
 import 'package:responsive_builder/responsive_builder.dart';

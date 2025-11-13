@@ -22,8 +22,7 @@ class MaterialInkWell extends StatelessWidget {
       this.color = Colors.transparent,
       this.splashColor = AppColors.accentColorAlt,
       this.shadowColor = AppColors.accentColorAlt,
-      Key? key})
-      : super(key: key);
+      super.key});
 
   @override
   Widget build(BuildContext context) {

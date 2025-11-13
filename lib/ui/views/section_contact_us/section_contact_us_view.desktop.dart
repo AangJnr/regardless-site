@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:regardless_site/ui/widgets/labeled_form_field.dart';
 import 'package:regardless_site/ui/widgets/newsletter_widget.dart';
 import 'package:regardless_site/ui/widgets/primary_button_widget.dart';
@@ -24,8 +23,7 @@ class SectionContactUsViewDesktop
   Widget build(BuildContext context, SectionContactUsViewModel viewModel) {
     return Container(
       color: AppColors.whiteColor,
-      padding: EdgeInsets.only(
-          top: largeSize),
+      padding: EdgeInsets.only(top: largeSize),
       child: Column(
         children: [
           Row(
@@ -127,7 +125,8 @@ class SectionContactUsViewDesktop
               ),
               horizontalSpaceMassive,
             ],
-          ),verticalSpaceLarge,
+          ),
+          verticalSpaceLarge,
           NewsletterWidget()
         ],
       ),

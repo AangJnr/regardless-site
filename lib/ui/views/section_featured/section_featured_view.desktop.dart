@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
- import 'package:regardless_site/app/config/theme_setup.dart';
- import 'package:regardless_site/ui/common/ui_helpers.dart';
+import 'package:regardless_site/app/config/theme_setup.dart';
+import 'package:regardless_site/ui/common/ui_helpers.dart';
 import 'package:stacked/stacked.dart';
- import '../../widgets/regardless_text.dart';
+import '../../widgets/regardless_text.dart';
 import 'section_featured_viewmodel.dart';
 
 class SectionFeaturedViewDesktop
@@ -23,7 +23,7 @@ class SectionFeaturedViewDesktop
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(
+                SizedBox(
                     height: 500,
                     width: 500,
                     child: _buildGridWidget(viewModel)),

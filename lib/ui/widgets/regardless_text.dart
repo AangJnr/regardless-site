@@ -1,7 +1,5 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_linkify/flutter_linkify.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../../../app/config/theme_setup.dart';
 
@@ -21,8 +19,7 @@ class RegardlessTextWidget extends StatelessWidget {
       this.textAlign = TextAlign.center,
       this.onWordTap,
       this.hasLinks = false,
-      Key? key})
-      : super(key: key);
+      super.key});
 
   @override
   Widget build(BuildContext context) {

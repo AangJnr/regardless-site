@@ -1,6 +1,5 @@
 import 'package:regardless_site/ui/common/ui_helpers.dart';
 import 'package:flutter/material.dart';
-import 'package:regardless_site/ui/views/home/home_view.desktop.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:stacked/stacked.dart';
 
@@ -17,7 +16,7 @@ class HomeViewMobile extends ViewModelWidget<HomeViewModel> {
 
   @override
   Widget build(BuildContext context, HomeViewModel viewModel) {
-     return Scaffold(
+    return Scaffold(
       backgroundColor: AppColors.whiteColor,
       body: SingleChildScrollView(
         child: Column(

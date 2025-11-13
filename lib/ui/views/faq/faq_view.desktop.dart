@@ -48,8 +48,7 @@ class FaqViewDesktop extends ViewModelWidget<FaqViewModel> {
                     child: SingleChildScrollView(
                         child: Column(children: [
                   ...viewModel.faqTopics
-                      .map((e) => _buildFaqTopicWidget(context, e))
-                      .toList(),
+                      .map((e) => _buildFaqTopicWidget(context, e)),
                   verticalSpaceLarge,
                   FooterWidget(),
                   verticalSpaceMassive
@@ -73,33 +72,30 @@ class FaqViewDesktop extends ViewModelWidget<FaqViewModel> {
               color: AppColors.blackColor),
         ),
         verticalSpaceSmall,
-        ...topic.faqs
-            .map((e) => FAQ(
-                  question: e.question,
-                  answer: e.answer,
-                  showDivider: false,
-                  ansPadding: const EdgeInsets.all(30),
-                  queStyle: Theme.of(context).textTheme.bodySmall?.copyWith(
-                      fontSize: 16,
-                      color: AppColors.blackColor,
-                      fontWeight: FontWeight.bold),
-                  ansStyle: Theme.of(context).textTheme.labelMedium?.copyWith(
-                      fontSize: 13,
-                      color: AppColors.blackColor600,
-                      fontWeight: FontWeight.w700),
-                  separator: Container(
-                    height: 2,
-                    width: double.infinity,
-                    color: AppColors.divider,
-                  ),
-                  queDecoration: BoxDecoration(
-                      color: AppColors.whiteColor,
-                      borderRadius: const BorderRadius.all(Radius.circular(0))),
-                  ansDecoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(0)),
-                ))
-            .toList(),
+        ...topic.faqs.map((e) => FAQ(
+              question: e.question,
+              answer: e.answer,
+              showDivider: false,
+              ansPadding: const EdgeInsets.all(30),
+              queStyle: Theme.of(context).textTheme.bodySmall?.copyWith(
+                  fontSize: 16,
+                  color: AppColors.blackColor,
+                  fontWeight: FontWeight.bold),
+              ansStyle: Theme.of(context).textTheme.labelMedium?.copyWith(
+                  fontSize: 13,
+                  color: AppColors.blackColor600,
+                  fontWeight: FontWeight.w700),
+              separator: Container(
+                height: 2,
+                width: double.infinity,
+                color: AppColors.divider,
+              ),
+              queDecoration: BoxDecoration(
+                  color: AppColors.whiteColor,
+                  borderRadius: const BorderRadius.all(Radius.circular(0))),
+              ansDecoration: BoxDecoration(
+                  color: Colors.white, borderRadius: BorderRadius.circular(0)),
+            )),
         verticalSpaceMedium,
         Divider(height: 2, color: AppColors.divider),
         verticalSpaceMedium,
