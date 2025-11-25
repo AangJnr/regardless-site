@@ -9,14 +9,13 @@ import 'package:flutter/material.dart' as _i11;
 import 'package:stacked/stacked.dart' as _i10;
 import 'package:stacked_services/stacked_services.dart' as _i9;
 
-import '../ui/views/faq/faq_view.dart' as _i4;
+import '../ui/views/faq/faq_view.dart' as _i3;
 import '../ui/views/home/home_view.dart' as _i1;
 import '../ui/views/section_contact_us/section_contact_us_view.dart' as _i7;
 import '../ui/views/section_download_app/section_download_app_view.dart' as _i6;
-import '../ui/views/training_services/section_sessions_info_view.dart'
-    as _i5;
-import '../ui/views/shop/shop_view.dart' as _i2;
-import '../ui/views/terms/terms_view.dart' as _i3;
+import '../ui/views/shop/shop_view.dart' as _i5;
+import '../ui/views/terms/terms_view.dart' as _i2;
+import '../ui/views/training_services/section_sessions_info_view.dart' as _i4;
 import '../ui/views/unknown/unknown_view.dart' as _i8;
 
 final stackedRouter =
@@ -36,18 +35,10 @@ class StackedRouterWeb extends _i10.RootStackRouter {
         barrierDismissible: false,
       );
     },
-    ShopViewRoute.name: (routeData) {
-      return _i10.CustomPage<dynamic>(
-        routeData: routeData,
-        child: const _i2.ShopView(),
-        opaque: true,
-        barrierDismissible: false,
-      );
-    },
     TermsRoute.name: (routeData) {
       return _i10.CustomPage<dynamic>(
         routeData: routeData,
-        child: const _i3.TermsView(),
+        child: const _i2.TermsView(),
         opaque: true,
         barrierDismissible: false,
       );
@@ -55,7 +46,7 @@ class StackedRouterWeb extends _i10.RootStackRouter {
     PolicyRoute.name: (routeData) {
       return _i10.CustomPage<dynamic>(
         routeData: routeData,
-        child: const _i3.TermsView(),
+        child: const _i2.TermsView(),
         opaque: true,
         barrierDismissible: false,
       );
@@ -63,7 +54,7 @@ class StackedRouterWeb extends _i10.RootStackRouter {
     FaqViewRoute.name: (routeData) {
       return _i10.CustomPage<dynamic>(
         routeData: routeData,
-        child: const _i4.FaqView(),
+        child: const _i3.FaqView(),
         opaque: true,
         barrierDismissible: false,
       );
@@ -71,7 +62,15 @@ class StackedRouterWeb extends _i10.RootStackRouter {
     SectionSessionsInfoViewRoute.name: (routeData) {
       return _i10.CustomPage<dynamic>(
         routeData: routeData,
-        child: const _i5.SectionSessionsInfoView(),
+        child: const _i4.SectionSessionsInfoView(),
+        opaque: true,
+        barrierDismissible: false,
+      );
+    },
+    ShopViewRoute.name: (routeData) {
+      return _i10.CustomPage<dynamic>(
+        routeData: routeData,
+        child: const _i5.ShopView(),
         opaque: true,
         barrierDismissible: false,
       );
@@ -107,10 +106,6 @@ class StackedRouterWeb extends _i10.RootStackRouter {
         _i10.RouteConfig(
           HomeViewRoute.name,
           path: '/',
-        ),
-        _i10.RouteConfig(
-          ShopViewRoute.name,
-          path: '/shop',
         ),
         _i10.RouteConfig(
           TermsRoute.name,
@@ -166,19 +161,7 @@ class HomeViewRoute extends _i10.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i2.ShopView]
-class ShopViewRoute extends _i10.PageRouteInfo<void> {
-  const ShopViewRoute()
-      : super(
-          ShopViewRoute.name,
-          path: '/shop',
-        );
-
-  static const String name = 'ShopView';
-}
-
-/// generated route for
-/// [_i3.TermsView]
+/// [_i2.TermsView]
 class TermsRoute extends _i10.PageRouteInfo<void> {
   const TermsRoute()
       : super(
@@ -190,7 +173,7 @@ class TermsRoute extends _i10.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i3.TermsView]
+/// [_i2.TermsView]
 class PolicyRoute extends _i10.PageRouteInfo<void> {
   const PolicyRoute()
       : super(
@@ -202,7 +185,7 @@ class PolicyRoute extends _i10.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i4.FaqView]
+/// [_i3.FaqView]
 class FaqViewRoute extends _i10.PageRouteInfo<void> {
   const FaqViewRoute()
       : super(
@@ -214,7 +197,7 @@ class FaqViewRoute extends _i10.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i5.SectionSessionsInfoView]
+/// [_i4.SectionSessionsInfoView]
 class SectionSessionsInfoViewRoute extends _i10.PageRouteInfo<void> {
   const SectionSessionsInfoViewRoute()
       : super(
@@ -223,6 +206,18 @@ class SectionSessionsInfoViewRoute extends _i10.PageRouteInfo<void> {
         );
 
   static const String name = 'SectionSessionsInfoView';
+}
+
+/// generated route for
+/// [_i5.ShopView]
+class ShopViewRoute extends _i10.PageRouteInfo<void> {
+  const ShopViewRoute()
+      : super(
+          ShopViewRoute.name,
+          path: '/shop',
+        );
+
+  static const String name = 'ShopView';
 }
 
 /// generated route for
@@ -270,14 +265,6 @@ extension RouterStateExtension on _i9.RouterService {
     );
   }
 
-  Future<dynamic> navigateToShopView(
-      {void Function(_i10.NavigationFailure)? onFailure}) async {
-    return navigateTo(
-      const ShopViewRoute(),
-      onFailure: onFailure,
-    );
-  }
-
   Future<dynamic> navigateToTerms(
       {void Function(_i10.NavigationFailure)? onFailure}) async {
     return navigateTo(
@@ -306,6 +293,14 @@ extension RouterStateExtension on _i9.RouterService {
       {void Function(_i10.NavigationFailure)? onFailure}) async {
     return navigateTo(
       const SectionSessionsInfoViewRoute(),
+      onFailure: onFailure,
+    );
+  }
+
+  Future<dynamic> navigateToShopView(
+      {void Function(_i10.NavigationFailure)? onFailure}) async {
+    return navigateTo(
+      const ShopViewRoute(),
       onFailure: onFailure,
     );
   }
@@ -342,14 +337,6 @@ extension RouterStateExtension on _i9.RouterService {
     );
   }
 
-  Future<dynamic> replaceWithShopView(
-      {void Function(_i10.NavigationFailure)? onFailure}) async {
-    return replaceWith(
-      const ShopViewRoute(),
-      onFailure: onFailure,
-    );
-  }
-
   Future<dynamic> replaceWithTerms(
       {void Function(_i10.NavigationFailure)? onFailure}) async {
     return replaceWith(
@@ -378,6 +365,14 @@ extension RouterStateExtension on _i9.RouterService {
       {void Function(_i10.NavigationFailure)? onFailure}) async {
     return replaceWith(
       const SectionSessionsInfoViewRoute(),
+      onFailure: onFailure,
+    );
+  }
+
+  Future<dynamic> replaceWithShopView(
+      {void Function(_i10.NavigationFailure)? onFailure}) async {
+    return replaceWith(
+      const ShopViewRoute(),
       onFailure: onFailure,
     );
   }

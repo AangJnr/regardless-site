@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:regardless_site/extensions/hover_extensions.dart';
+import 'package:regardless_site/ui/usecase/links_usecase.dart';
 import 'package:regardless_site/ui/views/app_container/app_container_view.dart';
+import 'package:regardless_site/ui/widgets/header.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:lottie/lottie.dart';
 
@@ -87,7 +90,7 @@ class _SectionDownloadState extends State<SectionDownloadAppView>
                 color: AppColors.secondartTextColor,
                 fontSize: isMobile ? 13 : 15),
           ),
-          verticalSpaceLarge,
+          verticalSpaceMedium,
           _buildAppStoreIconsWidget(isMobile),
           verticalSpaceMedium
         ]);
@@ -96,40 +99,37 @@ class _SectionDownloadState extends State<SectionDownloadAppView>
   Row _buildAppStoreIconsWidget(bool isMobile) {
     return Row(
       children: [
-        Expanded(
-          child: GestureDetector(
-            onTap: () {},
-            child: Container(constraints: BoxConstraints(maxWidth: 150),
-              padding: EdgeInsets.all(2),
-              decoration: BoxDecoration(
-                  border: Border.all(width: 1.5, color: Colors.white70),
-                  borderRadius: BorderRadius.circular(6)),
-              child: Image.asset(
-                height: isMobile ? 50 : 70,
-                width: isMobile ? 150 : double.infinity,
-                'assets/apple_store.png',
-                fit: BoxFit.fitWidth,
-              ),
+        GestureDetector(
+          onTap: () {
+             LinksUseCase().openLink(
+                'https://testflight.apple.com/join/ZumJqcbz');
+          },
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(15),
+            child: Image.asset(
+              height: isMobile ? 50 : 70,
+              width: isMobile ? 50 : 70,
+              'assets/apple_store_icon.png',
+              fit: BoxFit.fitHeight,
             ),
           ),
-        ),
+        ).scaleOnHover(),
         horizontalSpaceMedium,
-        Expanded(
-          child: GestureDetector(
-            onTap: () {},
-            child: Container(constraints: BoxConstraints(maxWidth: 150),
-                padding: EdgeInsets.all(2),
-                decoration: BoxDecoration(
-                    border: Border.all(width: 1.5, color: Colors.white70),
-                    borderRadius: BorderRadius.circular(6)),
-                child: Image.asset(
-                  height: isMobile ? 50 : 70,
-                  width: isMobile ? 150 : double.infinity,
-                  'assets/google_play.png',
-                  fit: BoxFit.fitWidth,
-                )),
+        GestureDetector(
+          onTap: () {
+            LinksUseCase().openLink(
+                'https://play.google.com/store/apps/details?id=com.regardless.social_app');
+          },
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(15),
+            child: Image.asset(
+              'assets/google_play_icon.png',
+              fit: BoxFit.fitHeight,
+              height: isMobile ? 50 : 70,
+              width: isMobile ? 50 : 70,
+            ),
           ),
-        ),
+        ).scaleOnHover(),
         horizontalSpaceSmall,
       ],
     );
@@ -137,18 +137,9 @@ class _SectionDownloadState extends State<SectionDownloadAppView>
 
   Widget _buildMockupWidget() {
     return ClipRRect(
-      child: Lottie.asset(
-        key: _viewModel.animationKey,
-        'assets/r_mockup.json',
-        repeat: false,
-        fit: BoxFit.fitHeight,
-        controller: _viewModel.controller,
-        onLoaded: (composition) {
-          // Configure the AnimationController with the duration of the
-          _viewModel.controller
-            ..duration = composition.duration
-            ..forward();
-        },
+      child: Image.asset(
+        'assets/scene_1.png',
+        fit: BoxFit.fitWidth,
       ),
     );
   }

@@ -78,4 +78,8 @@ class LinksUseCase {
         break;
     }
   }
+
+  openLink(String url) {
+    launchUrl(Uri.parse(url));
+  }
 }
